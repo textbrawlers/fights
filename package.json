@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/textbrawlers/fights/issues"
   },
-  "homepage": "https://github.com/textbrawlers/fights#readme"
+  "homepage": "https://github.com/textbrawlers/fights#readme",
+  "dependencies": {
+    "node-linq": "0.0.5"
+  }
 }
