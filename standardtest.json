@@ -17,7 +17,8 @@
               "effects": [
                 {
                   "name": "crit",
-                  "dmgMult": 1.5
+                  "dmgMult": 1.5,
+                  "chance": 0.75
                 }
               ]
             }
@@ -26,7 +27,7 @@
       ]
     },
     {
-      "name": "Team od Doom",
+      "name": "Team of Doom",
       "members": [
         {
           "name": "Grutato",

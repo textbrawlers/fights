@@ -1,7 +1,7 @@
 'use strict'
 
 let validator = require('../core/validator')
-let fight = require('../core/fight')
+let fight = require('../core/fight/fight')
 
 exports.start = function(req, res) {
   console.log(`Got fight request`)
