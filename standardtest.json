@@ -13,7 +13,7 @@
             {
               "name": "Broadsword",
               "damage": 4,
-              "speed": 0.9,
+              "hitChance": 0.9,
               "effects": [
                 {
                   "name": "crit",
@@ -39,7 +39,7 @@
             {
               "name": "Whip",
               "damage": 1,
-              "speed": 0.75,
+              "hitChance": 0.75,
               "effects": []
             }
           ]
@@ -54,13 +54,13 @@
             {
               "name": "Left Fist",
               "damage": 1,
-              "speed": 0.6,
+              "hitChance": 0.6,
               "effects": []
             },
             {
               "name": "Right Fist",
               "damage": 1,
-              "speed": 0.6,
+              "hitChance": 0.6,
               "effects": []
             }
           ]

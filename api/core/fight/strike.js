@@ -9,7 +9,7 @@ exports.strike = function(fightObject, attacker, defender, weapon) {
     if (registeredEffect !== null) {
       effects.push({
         name: registeredEffect.name,
-        priority: registeredEffect.priority,
+        triggerOrder: registeredEffect.triggerOrder,
         type: registeredEffect.type,
         triggerOn: registeredEffect.triggerOn,
         apply: registeredEffect.apply,
@@ -20,7 +20,7 @@ exports.strike = function(fightObject, attacker, defender, weapon) {
     }
   })
 
-  effects.sort((effectA, effectB) => effectA.priority - effectB.priority)
+  effects.sort((effectA, effectB) => effectA.triggerOrder - effectB.triggerOrder)
 
   let appliedEffects = []
   let finalDamage = weapon.damage

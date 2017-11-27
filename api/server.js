@@ -11,4 +11,4 @@ routes(app)
 
 app.listen(port)
 
-console.log('RESTful API started on port: ' + port)
+console.log('FightAPI started on port: ' + port)

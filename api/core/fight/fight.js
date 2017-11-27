@@ -4,29 +4,32 @@ let TEAM = require('./team')
 exports.start = function(fightObject) {
   let fightId = GUID.raw()
   console.log(`Executing fight: ${fightId}`)
-  let teams = fightObject.teams
-  teams.forEach(team => {
-    team.done = false
+  fightObject.teams.forEach(team => {
+    team.live = true
+    team.currentPlayer = 0
   })
 
-  teamTurns = true
-  let liveTeams = teams
-  fightObject.fight = {}
-  fightObject.fight.teamTurns = []
-  while (liveTeams.length > 1) {
-    liveTeams.forEach(team => {
-      let teamTurn = TEAM.doTeamTurn(fightObject, liveTeams, team, teamTurns)
+  fightObject.teamTurns = true
+  fightObject.currentTeam = 0
+  fightLog = {}
+  fightLog.teamTurns = []
+  while (fightObject.teams.filter(t => t.live).length > 1) {
+    if (fightObject.currentTeam === fightObject.teams.length) {
+      fightObject.currentTeam = 0
+    } else if (fightObject.teams[fightObject.currentTeam].live) {
+      let teamTurn = TEAM.doTurn(fightObject)
+      fightObject.currentTeam++
       if (teamTurn === null) {
-        return
+        continue
       } else {
-        fightObject.fight.teamTurns.push(teamTurn)
+        fightLog.teamTurns.push(teamTurn)
       }
-    })
-    liveTeams = teams.filter(t => !t.done)
-    if (liveTeams.length === 1) {
-      fightObject.fight.winner = liveTeams[0].name
-      console.log(`Fight done: ${fightId}`)
+    } else {
+      fightObject.currentTeam++
     }
   }
-  return fightObject
+
+  fightLog.winner = fightObject.teams.find(t => t.live).name
+  console.log(`Fight done: ${fightId}`)
+  return fightLog
 }

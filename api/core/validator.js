@@ -50,8 +50,8 @@ function checkMembers(members, err) {
 
 function checkWeapons(weapons, err) {
   return weapons.every(weapon => {
-    if (!weapon && !weapon.name && !weapon.damage && !weapon.speed) {
-      err.message = `A weapon is undefined or is missing name, damage or speed.`
+    if (!weapon && !weapon.name && !weapon.damage && !weapon.hitChance) {
+      err.message = `A weapon is undefined or is missing name, damage or hitChance.`
       return false
     } else if (typeof weapon.name !== 'string') {
       err.message = `A weapon name is not of type string.`
@@ -59,7 +59,7 @@ function checkWeapons(weapons, err) {
     } else if (typeof weapon.damage !== 'number') {
       err.message = `A weapons damage is not a number.`
       return false
-    } else if (typeof weapon.speed !== 'number') {
+    } else if (typeof weapon.hitChance !== 'number') {
       err.message = `A weapons speed is not a number.`
       return false
     } else {
