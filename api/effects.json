@@ -5,12 +5,19 @@
       "name": "crit",
       "_triggerOrder": "The order position of the effect (preferrably starting from 0). An effect with triggerOrder 5 will be executed after one with triggerOrder 2 but before one with triggerOrder 19.",
       "triggerOrder": 50,
-      "_type": "Defines the type of the effect valid values are: offensive and defensive.",
+      "_type": "Defines the type of the effect valid values are: offensive, defensive and neutral.",
       "type": "offensive",
       "_triggerOn": "An effect can be registered to only trigger in something else has happened in the strike. Currently only supports if another effect has been used.",
       "triggerOn": "hit",
       "_file": "Tells the fight wich file that contanis the apply function for the effect. The file must be placed in /core/effects.",
       "file": "crit.js"
+    },
+    {
+      "name": "timestop",
+      "triggerOrder": 1000,
+      "type": "neutral",
+      "triggerOn": "hit",
+      "file": "timestop.js"
     }
   ]
 }

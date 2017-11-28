@@ -40,7 +40,12 @@
               "name": "Whip",
               "damage": 1,
               "hitChance": 0.75,
-              "effects": []
+              "effects": [
+                {
+                  "name": "timestop",
+                  "chance": 1
+                }
+              ]
             }
           ]
         },

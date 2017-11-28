@@ -35,6 +35,6 @@ exports.strike = function(fightObject, attacker, defender, weapon) {
     status: 'hit',
     weapon: weapon.name,
     damage: finalDamage,
-    appliedEffects: fightObject.appliedEffects
+    appliedEffects: appliedEffects
   }
 }
