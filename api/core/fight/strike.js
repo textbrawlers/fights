@@ -25,8 +25,7 @@ exports.strike = function(fightObject, attacker, defender, weapon) {
   let appliedEffects = []
   let finalDamage = weapon.damage
   effects.forEach(effect => {
-    appliedEffects.push(effect.name)
-    finalDamage = effect.apply(fightObject, effect.settings, finalDamage)
+    finalDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
   })
 
   defender.stats.hp -= finalDamage

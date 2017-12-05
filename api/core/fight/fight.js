@@ -9,11 +9,21 @@ exports.start = function(fightObject) {
     team.currentPlayer = 0
   })
 
+  fightObject.getCurrentTeam = function() {
+    return fightObject.teams[fightObject.currentTeam]
+  }
+  fightObject.getCurrentPlayer = function() {
+    let team = fightObject.getCurrentTeam()
+    return team.members[team.currentPlayer]
+  }
+
+  fightObject.effectStore = {}
   fightObject.teamTurns = true
   fightObject.currentTeam = 0
   fightLog = {}
   fightLog.teamTurns = []
   while (fightObject.teams.filter(t => t.live).length > 1) {
+    fightObject.turnId = GUID.raw()
     if (fightObject.currentTeam === fightObject.teams.length) {
       fightObject.currentTeam = 0
     } else if (fightObject.teams[fightObject.currentTeam].live) {

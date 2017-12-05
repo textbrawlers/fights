@@ -1,3 +1,4 @@
+let GUID = require('guid')
 let PLAYER = require('./player')
 
 exports.doTurn = function(fightObject) {
@@ -18,6 +19,7 @@ exports.doTurn = function(fightObject) {
   currentTeam.currentPlayer = 0
   if (fightObject.teamTurns) {
     while (currentTeam.currentPlayer < currentTeam.members.length) {
+      currentTeam.playerTurnId = GUID.raw()
       let turn = PLAYER.doTurn(fightObject, currentTeam, targetTeam)
       currentTeam.currentPlayer++
       if (turn === null) {
@@ -27,6 +29,7 @@ exports.doTurn = function(fightObject) {
       }
     }
   } else {
+    currentTeam.playerTurnId = GUID.raw()
     let turn = PLAYER.doTurn(fightObject, currentTeam, targetTeam)
     currentTeam.currentPlayer++
     if (turn !== null) {

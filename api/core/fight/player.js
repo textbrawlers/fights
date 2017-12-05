@@ -30,6 +30,15 @@ exports.doTurn = function(fightObject, currentTeam, targetTeam) {
     }
   }
 
+  Object.entries(fightObject.effectStore).forEach(([key, value]) => {
+    if (value.decreaseOnTurnEnd) {
+      value.duration--
+      if (value.duration <= 0) {
+        delete fightObject.effectStore[key]
+      }
+    }
+  })
+
   return {
     attacker: attacker.name, // TODO: Change to id.
     defender: defender.name, // TODO: Change to id.
