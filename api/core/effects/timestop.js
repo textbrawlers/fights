@@ -7,10 +7,10 @@ exports.apply = function(fightObject, settings, damage, success) {
       success()
       fightObject.getCurrentTeam().currentPlayer--
       fightObject.effectStore['timestop'] = {
+        target: fightObject.attacker.id,
         decreaseOnTurnEnd: true,
         duration: 2
       }
     }
-    return damage
   }
 }

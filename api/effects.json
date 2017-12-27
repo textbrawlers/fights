@@ -18,6 +18,13 @@
       "type": "neutral",
       "triggerOn": "hit",
       "file": "timestop.js"
+    },
+    {
+      "name": "bleed",
+      "triggerOrder": 100,
+      "type": "neutral",
+      "triggerOn": "hit",
+      "file": "bleed.js"
     }
   ]
 }

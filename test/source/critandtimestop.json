@@ -1,0 +1,79 @@
+{
+  "teams": [
+    {
+      "name": "Potato's Team",
+      "members": [
+        {
+          "name": "Potato",
+          "id": "abc123",
+          "stats": {
+            "hp": 48,
+            "effects": []
+          },
+          "weapons": [
+            {
+              "name": "Broadsword",
+              "damage": 4,
+              "hitChance": 0.9,
+              "effects": [
+                {
+                  "name": "crit",
+                  "dmgMult": 1.5,
+                  "chance": 0.75
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Team of Doom",
+      "members": [
+        {
+          "name": "Grutato",
+          "id": "acp453",
+          "stats": {
+            "hp": 23,
+            "effects": []
+          },
+          "weapons": [
+            {
+              "name": "Whip",
+              "damage": 1,
+              "hitChance": 0.75,
+              "effects": [
+                {
+                  "name": "timestop",
+                  "chance": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tomato",
+          "id": "nej987",
+          "stats": {
+            "hp": 10,
+            "effects": []
+          },
+          "weapons": [
+            {
+              "name": "Left Fist",
+              "damage": 1,
+              "hitChance": 0.6,
+              "effects": []
+            },
+            {
+              "name": "Right Fist",
+              "damage": 1,
+              "hitChance": 0.6,
+              "effects": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

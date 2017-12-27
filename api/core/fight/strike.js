@@ -1,11 +1,7 @@
-let EFFECTREGISTRY = require('../effectregistry')
-
-EFFECTREGISTRY.initialize()
-
-exports.strike = function(fightObject, attacker, defender, weapon) {
+exports.strike = function(fightObject, weapon, effectregistry) {
   let effects = []
   weapon.effects.forEach(we => {
-    let registeredEffect = EFFECTREGISTRY.getEffect(we.name)
+    let registeredEffect = effectregistry.getEffect(we.name)
     if (registeredEffect !== null) {
       effects.push({
         name: registeredEffect.name,
@@ -25,10 +21,11 @@ exports.strike = function(fightObject, attacker, defender, weapon) {
   let appliedEffects = []
   let finalDamage = weapon.damage
   effects.forEach(effect => {
-    finalDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
+    let effectDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
+    finalDamage = Number.isInteger(effectDamage) ? effectDamage : finalDamage
   })
 
-  defender.stats.hp -= finalDamage
+  fightObject.defender.stats.hp -= finalDamage
 
   return {
     status: 'hit',

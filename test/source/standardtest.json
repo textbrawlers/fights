@@ -5,6 +5,7 @@
       "members": [
         {
           "name": "Potato",
+          "id": "abc123",
           "stats": {
             "hp": 48,
             "effects": []
@@ -14,13 +15,7 @@
               "name": "Broadsword",
               "damage": 4,
               "hitChance": 0.9,
-              "effects": [
-                {
-                  "name": "crit",
-                  "dmgMult": 1.5,
-                  "chance": 0.75
-                }
-              ]
+              "effects": []
             }
           ]
         }
@@ -31,6 +26,7 @@
       "members": [
         {
           "name": "Grutato",
+          "id": "acp453",
           "stats": {
             "hp": 23,
             "effects": []
@@ -40,17 +36,13 @@
               "name": "Whip",
               "damage": 1,
               "hitChance": 0.75,
-              "effects": [
-                {
-                  "name": "timestop",
-                  "chance": 1
-                }
-              ]
+              "effects": []
             }
           ]
         },
         {
           "name": "Tomato",
+          "id": "nej987",
           "stats": {
             "hp": 10,
             "effects": []
