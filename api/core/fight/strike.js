@@ -9,15 +9,12 @@ exports.strike = function(fightObject, weapon) {
   let appliedEffects = []
   let finalDamage = weapon.damage
   effects.forEach(effect => {
-    let effectDamage = NaN
-    if (effect.conditions && checkConditions(effect.conditions, appliedEffects)) {
-      effectDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
-    } else if (effect.triggerOn != 'hit' && appliedEffects.contanis(effect.triggerOn)) {
-      effectDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
-    } else {
-      effectDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
+    let conditionsFulfilled = effect.conditions ? checkConditions(effect.conditions, appliedEffects) : true
+    let requiredTriggered = effect.triggerOn != 'hit' ? appliedEffects.contanis(effect.triggerOn) : true
+    if (conditionsFulfilled && requiredTriggered) {
+      let effectDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
+      finalDamage = effectDamage === 'number' ? effectDamage : finalDamage
     }
-    finalDamage = effectDamage === 'number' ? effectDamage : finalDamage
   })
 
   fightObject.defender.stats.hp -= finalDamage
