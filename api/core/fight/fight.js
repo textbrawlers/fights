@@ -24,7 +24,9 @@ exports.start = function(fightObject) {
   fightObject.effectStore = {}
   fightObject.teamTurns = true
   fightObject.currentTeam = 0
-  fightLog = {}
+  fightLog = {
+    id: fightId
+  }
   fightLog.teamTurns = []
   while (fightObject.teams.filter(t => t.live).length > 1) {
     fightObject.turnId = GUID.raw()

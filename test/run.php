@@ -19,17 +19,22 @@ curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_POSTFIELDS, $fc);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($fc))
+    "Content-Type: application/json",
+    "Content-Length: " . strlen($fc))
 );
 
 // Make and close request
 $res = curl_exec($ch);
 curl_close($ch);
 
-$json = json_encode(json_decode($res), JSON_PRETTY_PRINT);
+$id = json_decode($res, true)["id"];
 
-$output = "<pre><code class=\"json\">$json</code></pre>
+$file = fopen("cache/$id.json", "w") or die("Unable to open file!");
+fwrite($file, $res);
+fclose($file);
+
+header("Location: https://textbrawlers.gigavoid.com/test/display.php?result=$id");
+/*$output = "<pre><code class=\"json\">$json</code></pre>
   <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/ocean.min.css\">
   <script src=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js\"></script>
   <script>hljs.initHighlightingOnLoad()</script>";
@@ -44,4 +49,4 @@ $output = "<pre><code class=\"json\">$json</code></pre>
   <body>
     <?= $output ?>
   </body>
-</html>
+</html>*/

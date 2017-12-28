@@ -8,7 +8,7 @@ function display_testfiles() {
       $filepath = "$filedir/$filename";
       if (file_exists($filepath)) {
         $result .= "<tr><td>";
-        $result .= "<a href=\"display.php?file=$filename\"><i class=\"fa fa-file-text\" aria-hidden=\"true\"></i>&nbsp;$filename</a>";
+        $result .= "<a href=\"display.php?source=$filename\"><i class=\"fa fa-file-text\" aria-hidden=\"true\"></i>&nbsp;$filename</a>";
         $result .= "</td><td>";
         $result .= date("d-M-Y H:i:s", filemtime($filepath));
         $result .= "</td><td>";

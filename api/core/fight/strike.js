@@ -49,7 +49,7 @@ function collectEffects(source) {
 }
 
 function checkConditions(conditions, appliedEffects) {
-  let fulfilled = conditions.every(condition => {
+  return conditions.every(condition => {
     c = condition.split(' ')
     if (c[0] === '!') {
       return !appliedEffects.includes(c[1])
