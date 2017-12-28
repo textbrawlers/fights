@@ -10,7 +10,11 @@
       "_triggerOn": "An effect can be registered to only trigger in something else has happened in the strike. Currently only supports if another effect has been used.",
       "triggerOn": "hit",
       "_file": "Tells the fight wich file that contanis the apply function for the effect. The file must be placed in /core/effects.",
-      "file": "crit.js"
+      "file": "crit.js",
+      "_conditions": "Defines conditions that must be fulfilled for the effect to trigger",
+      "conditions": [
+        "! block"
+      ]
     },
     {
       "name": "timestop",
@@ -22,9 +26,19 @@
     {
       "name": "bleed",
       "triggerOrder": 100,
-      "type": "neutral",
+      "type": "offensive",
       "triggerOn": "hit",
-      "file": "bleed.js"
+      "file": "bleed.js",
+      "conditions": [
+        "! block"
+      ]
+    },
+    {
+      "name": "block",
+      "triggerOrder": 40,
+      "type": "defensive",
+      "triggerOn": "hit",
+      "file": "block.js"
     }
   ]
 }

@@ -37,7 +37,7 @@ exports.doTurn = function(fightObject, currentTeam, targetTeam) {
     while (hitChance > 0) {
       let roll = Math.random()
       if (roll < hitChance) {
-        strikeLog.push(STRIKE.strike(fightObject, weapon, EFFECTREGISTRY))
+        strikeLog.push(STRIKE.strike(fightObject, weapon))
       } else {
         strikeLog.push({
           status: 'miss',

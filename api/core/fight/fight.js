@@ -16,6 +16,10 @@ exports.start = function(fightObject) {
     let team = fightObject.getCurrentTeam()
     return team.members[team.currentPlayer]
   }
+  fightObject.getCurrentWeapon = function() {
+    let player = fightObject.getCurrentPlayer()
+    return player.weapons[player.currentWeapon]
+  }
 
   fightObject.effectStore = {}
   fightObject.teamTurns = true

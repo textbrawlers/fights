@@ -1,8 +1,7 @@
-exports.apply = function(fightObject, settings, dmg, success) {
+exports.apply = function(fightObject, settings, damage, success) {
   let roll = Math.random()
   if (roll < settings.chance) {
     success()
-    return dmg * settings.dmgMult
+    return damage * settings.dmgMult
   }
-  return dmg
 }
