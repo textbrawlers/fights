@@ -13,7 +13,8 @@
       "file": "crit.js",
       "_conditions": "Defines conditions that must be fulfilled for the effect to trigger",
       "conditions": [
-        "! block"
+        "! block",
+        "! dodge"
       ]
     },
     {
@@ -21,7 +22,10 @@
       "triggerOrder": 1000,
       "type": "neutral",
       "triggerOn": "hit",
-      "file": "timestop.js"
+      "file": "timestop.js",
+      "conditions": [
+        "! dodge"
+      ]
     },
     {
       "name": "bleed",
@@ -30,7 +34,8 @@
       "triggerOn": "hit",
       "file": "bleed.js",
       "conditions": [
-        "! block"
+        "! block",
+        "! dodge"
       ]
     },
     {
@@ -38,7 +43,47 @@
       "triggerOrder": 40,
       "type": "defensive",
       "triggerOn": "hit",
-      "file": "block.js"
+      "file": "block.js",
+      "conditions": [
+        "! dodge"
+      ]
+    },
+    {
+      "name": "dodge",
+      "triggerOrder": 0,
+      "type": "defensive",
+      "triggerOn": "hit",
+      "file": "dodge.js"
+    },
+    {
+      "name": "multistrike",
+      "triggerOrder": 20,
+      "type": "offensive",
+      "triggerOn": "hit",
+      "file": "multistrike.js",
+      "conditions": [
+        "! dodge"
+      ]
+    },
+    {
+      "name": "poison",
+      "triggerOrder": 998,
+      "type": "offensive",
+      "triggerOn": "hit",
+      "file": "poison.js",
+      "conditions": [
+        "! dodge"
+      ]
+    },
+    {
+      "name": "burn",
+      "triggerOrder": 999,
+      "type": "offensive",
+      "triggerOn": "hit",
+      "file": "burn.js",
+      "conditions": [
+        "! dodge"
+      ]
     }
   ]
 }

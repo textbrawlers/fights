@@ -22,7 +22,7 @@ exports.doTurn = function(fightObject, currentTeam, targetTeam) {
             dotLog.push(effect.tick(fightObject, attacker))
           }
         })
-      } else if (value.target === attacker.target) {
+      } else if (value.target === attacker.id) {
         dotLog.push(effect.tick(fightObject, value, attacker))
       }
     }
@@ -32,11 +32,9 @@ exports.doTurn = function(fightObject, currentTeam, targetTeam) {
   attacker.currentWeapon = 0
   while (attacker.currentWeapon < attacker.weapons.length) {
     let weapon = attacker.weapons[attacker.currentWeapon]
-    attacker.currentWeapon++
-    let hitChance = weapon.hitChance
-    while (hitChance > 0) {
-      let roll = Math.random()
-      if (roll < hitChance) {
+    fightObject.currentHitChance = weapon.hitChance
+    while (fightObject.currentHitChance > 0) {
+      if (Math.random() < fightObject.currentHitChance) {
         strikeLog.push(STRIKE.strike(fightObject, weapon))
       } else {
         strikeLog.push({
@@ -46,8 +44,9 @@ exports.doTurn = function(fightObject, currentTeam, targetTeam) {
           appliedEffects: []
         })
       }
-      hitChance--
+      fightObject.currentHitChance--
     }
+    attacker.currentWeapon++
   }
 
   // Automatic duration decrease

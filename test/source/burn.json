@@ -1,0 +1,52 @@
+{
+  "teams": [
+    {
+      "name": "Crusaders",
+      "members": [
+        {
+          "name": "Holy Knight",
+          "id": "dge472",
+          "stats": {
+            "hp": 48,
+            "effects": []
+          },
+          "weapons": [
+            {
+              "name": "Lance",
+              "damage": 7,
+              "hitChance": 0.55,
+              "effects": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Team Mustard",
+      "members": [
+        {
+          "name": "Master Mustard",
+          "id": "hjr865",
+          "stats": {
+            "hp": 52,
+            "effects": []
+          },
+          "weapons": [
+            {
+              "name": "Gutting Knife",
+              "damage": 1,
+              "hitChance": 1,
+              "effects": [
+                {
+                  "name": "burn",
+                  "chance": 0.85,
+                  "multiplier": 1.3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

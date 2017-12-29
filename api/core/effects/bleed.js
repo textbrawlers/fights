@@ -1,6 +1,5 @@
 exports.apply = function(fightObject, settings, damage, success) {
-  let roll = Math.random()
-  if (roll < settings.chance) {
+  if (Math.random() < settings.chance) {
     success()
     if (!fightObject.effectStore['bleed']) {
       fightObject.effectStore['bleed'] = {

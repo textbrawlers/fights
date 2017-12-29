@@ -1,0 +1,62 @@
+{
+  "teams": [
+    {
+      "name": "The Kålhuvuden",
+      "members": [
+        {
+          "name": "Kål Tvål",
+          "id": "kfr964",
+          "stats": {
+            "hp": 21,
+            "effects": [
+              {
+                "name": "dodge",
+                "chance": 0.5
+              }
+            ]
+          },
+          "weapons": [
+            {
+              "name": "Leaf",
+              "damage": 2,
+              "hitChance": 0.4,
+              "effects": [
+                {
+                  "name": "poison",
+                  "damage": 4,
+                  "duration": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Exalt Trollen",
+      "members": [
+        {
+          "name": "Supertrollet Henrik",
+          "id": "sth759",
+          "stats": {
+            "hp": 24,
+            "effects": []
+          },
+          "weapons": [
+            {
+              "name": "Exaltkanon",
+              "damage": 3,
+              "hitChance": 0.6,
+              "effects": [
+                {
+                  "name": "multistrike",
+                  "chance": 0.7
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
