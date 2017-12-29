@@ -1,21 +1,25 @@
 exports.apply = function(fightObject, settings, damage, success) {
   if (Math.random() < settings.chance) {
     success()
-    if (!fightObject.effectStore['stun']) {
-      return fightObject.effectStore['stun'] = {
+    let effect = fightObject.effectStore.find(e => e.name === 'stun' && e.target === fightObject.defender.id)
+    if (!effect) {
+      fightObject.effectStore.push({
+        name: 'stun',
         target: fightObject.defender.id,
-        duration: 1,
         isDot: true,
-        decreaseOnTurnEnd: true
-      }
+        decreaseOnTurnEnd: true,
+        duration: 1
+      })
+    } else {
+      effect.duration = 1
     }
   }
 }
 
 exports.tick = function(fightObject, values, target) {
-  target.stats.hp -= values.damage
+  fightObject.rollHelpers.hcMultiplier = 0.5
   return {
-    name: 'poison',
-    damage: values.damage
+    name: 'stun',
+    damage: 0
   }
 }

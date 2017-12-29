@@ -21,7 +21,7 @@ exports.start = function(fightObject) {
     return player.weapons[player.currentWeapon]
   }
 
-  fightObject.effectStore = {}
+  fightObject.effectStore = []
   fightObject.teamTurns = true
   fightObject.currentTeam = 0
   fightLog = {

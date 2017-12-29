@@ -6,10 +6,8 @@
         {
           "name": "Potato",
           "id": "abc123",
-          "stats": {
-            "hp": 48,
-            "effects": []
-          },
+          "hp": 48,
+          "effects": [],
           "weapons": [
             {
               "name": "Broadsword",
@@ -27,10 +25,8 @@
         {
           "name": "Grutato",
           "id": "acp453",
-          "stats": {
-            "hp": 23,
-            "effects": []
-          },
+          "hp": 23,
+          "effects": [],
           "weapons": [
             {
               "name": "Whip",
@@ -43,10 +39,8 @@
         {
           "name": "Tomato",
           "id": "nej987",
-          "stats": {
-            "hp": 10,
-            "effects": []
-          },
+          "hp": 10,
+          "effects": [],
           "weapons": [
             {
               "name": "Left Fist",

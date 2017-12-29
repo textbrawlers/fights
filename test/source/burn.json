@@ -6,10 +6,8 @@
         {
           "name": "Holy Knight",
           "id": "dge472",
-          "stats": {
-            "hp": 48,
-            "effects": []
-          },
+          "hp": 48,
+          "effects": [],
           "weapons": [
             {
               "name": "Lance",
@@ -27,10 +25,8 @@
         {
           "name": "Master Mustard",
           "id": "hjr865",
-          "stats": {
-            "hp": 52,
-            "effects": []
-          },
+          "hp": 52,
+          "effects": [],
           "weapons": [
             {
               "name": "Gutting Knife",

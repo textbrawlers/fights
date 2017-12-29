@@ -6,16 +6,14 @@
         {
           "name": "Holy Knight",
           "id": "dge472",
-          "stats": {
-            "hp": 48,
-            "effects": [
-              {
-                "name": "block",
-                "chance": 0.7,
-                "multiplier": 0.7
-              }
-            ]
-          },
+          "hp": 48,
+          "effects": [
+            {
+              "name": "block",
+              "chance": 0.7,
+              "multiplier": 0.7
+            }
+          ],
           "weapons": [
             {
               "name": "Lance",
@@ -33,10 +31,8 @@
         {
           "name": "Master Mustard",
           "id": "hjr865",
-          "stats": {
-            "hp": 52,
-            "effects": []
-          },
+          "hp": 52,
+          "effects": [],
           "weapons": [
             {
               "name": "Gutting Knife",

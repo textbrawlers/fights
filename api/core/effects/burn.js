@@ -1,22 +1,26 @@
 exports.apply = function(fightObject, settings, damage, success) {
   if (Math.random() < settings.chance) {
     success()
-    if (!fightObject.effectStore['burn']) {
-      return fightObject.effectStore['burn'] = {
+    let effect = fightObject.effectStore.find(e => e.name === 'burn' && e.target === fightObject.defender.id)
+    if (!effect) {
+      fightObject.effectStore.push({
+        name: 'burn',
         target: fightObject.defender.id,
         damage: Math.round(damage * settings.multiplier),
-        duration: 3,
         isDot: true,
-        decreaseOnTurnEnd: true
-      }
+        decreaseOnTurnEnd: true,
+        duration: 3
+      })
+    } else {
+      effect.damage = Math.round(damage * settings.multiplier)
+      effect.duration = 3
     }
   }
 }
 
-exports.tick = function(fightObject, values, target) {
-  target.stats.hp -= values.damage
+exports.tick = function(fightObject, effect) {
   return {
     name: 'burn',
-    damage: values.damage
+    damage: effect.damage
   }
 }

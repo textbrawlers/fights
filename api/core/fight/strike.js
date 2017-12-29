@@ -3,7 +3,7 @@ let EFFECTREGISTRY = require('../effectregistry')
 EFFECTREGISTRY.initialize()
 
 exports.strike = function(fightObject, weapon) {
-  let effects = collectEffects(weapon).concat(collectEffects(fightObject.defender.stats))
+  let effects = collectEffects(weapon).concat(collectEffects(fightObject.defender))
   effects.sort((effectA, effectB) => effectA.triggerOrder - effectB.triggerOrder)
 
   let appliedEffects = []
@@ -13,11 +13,11 @@ exports.strike = function(fightObject, weapon) {
     let requiredTriggered = effect.triggerOn != 'hit' ? appliedEffects.contanis(effect.triggerOn) : true
     if (conditionsFulfilled && requiredTriggered) {
       let effectDamage = effect.apply(fightObject, effect.settings, finalDamage, () => { appliedEffects.push(effect.name) })
-      finalDamage = effectDamage === 'number' ? effectDamage : finalDamage
+      finalDamage = typeof effectDamage === 'number' ? effectDamage : finalDamage
     }
   })
 
-  fightObject.defender.stats.hp -= finalDamage
+  fightObject.defender.hp -= finalDamage
 
   return {
     status: 'hit',

@@ -5,7 +5,7 @@ exports.doTurn = function(fightObject) {
   // Only to be used for checking. Never set a value to "let currentTeam".
   // Use fightObject.teams[fightObject.currentTeam] to set values.
   let currentTeam = fightObject.teams[fightObject.currentTeam]
-  let currentTeamHealth = currentTeam.members.reduce(((totalHP, member) => totalHP + member.stats.hp), 0)
+  let currentTeamHealth = currentTeam.members.reduce(((totalHP, member) => totalHP + member.hp), 0)
   if (currentTeamHealth <= 0) {
     currentTeam.live = false
     return null

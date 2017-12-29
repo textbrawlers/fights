@@ -28,16 +28,13 @@ function checkTeams(teams, err) {
 
 function checkMembers(members, err) {
   return members.every(member => {
-    if (!member || !member.name || !member.id || !member.stats || !member.stats.hp) {
+    if (!member || !member.id || !member.hp) {
       err.message = `A member is undefined or is missing name, id, stats or stats.hp.`
       return false
     } else if (typeof member.id !== 'string') {
       err.message = `A member id is not of type string.`
       return false
-    } else if (typeof member.name !== 'string') {
-      err.message = `A member name is not of type string.`
-      return false
-    } else if (typeof member.stats.hp !== 'number') {
+    } else if (typeof member.hp !== 'number') {
       err.message = `A members hp is not a number.`
       return false
     }

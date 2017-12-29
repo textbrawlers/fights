@@ -3,14 +3,14 @@ $filepath = "";
 if (isset($_GET["file"])) {
   $filepath = "source/{$_GET["file"]}";
 } else {
-  die("Empty query param \"file\".");
+  die("400 Bad Request");
 }
 
 $fc = "";
 if (file_exists($filepath)) {
   $fc = file_get_contents($filepath);
 } else {
-  die("The file \"{$_GET["file"]}\" does not exist on server.");
+  die("404 Not Found");
 }
 
 // Build request
@@ -34,19 +34,3 @@ fwrite($file, $res);
 fclose($file);
 
 header("Location: https://textbrawlers.gigavoid.com/test/display.php?result=$id");
-/*$output = "<pre><code class=\"json\">$json</code></pre>
-  <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/ocean.min.css\">
-  <script src=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js\"></script>
-  <script>hljs.initHighlightingOnLoad()</script>";
-?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Fight result</title>
-    <style>body{margin:0;}pre{margin:0;}</style>
-  </head>
-  <body>
-    <?= $output ?>
-  </body>
-</html>*/

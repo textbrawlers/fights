@@ -6,15 +6,13 @@
         {
           "name": "Kål Tvål",
           "id": "kfr964",
-          "stats": {
-            "hp": 21,
-            "effects": [
-              {
-                "name": "dodge",
-                "chance": 0.5
-              }
-            ]
-          },
+          "hp": 21,
+          "effects": [
+            {
+              "name": "dodge",
+              "chance": 0.5
+            }
+          ],
           "weapons": [
             {
               "name": "Leaf",
@@ -38,10 +36,8 @@
         {
           "name": "Supertrollet Henrik",
           "id": "sth759",
-          "stats": {
-            "hp": 24,
-            "effects": []
-          },
+          "hp": 24,
+          "effects": [],
           "weapons": [
             {
               "name": "Exaltkanon",

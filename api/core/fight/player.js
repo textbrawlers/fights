@@ -5,34 +5,46 @@ EFFECTREGISTRY.initialize()
 
 exports.doTurn = function(fightObject, currentTeam, targetTeam) {
   let attacker = fightObject.attacker = currentTeam.members[currentTeam.currentPlayer]
-  let availDefenders = targetTeam.members.filter(targdeffer => targdeffer.stats.hp > 0)
+  let availDefenders = targetTeam.members.filter(targdeffer => targdeffer.hp > 0)
   if (availDefenders.length === 0) {
     return null
   }
   fightObject.defender = availDefenders[Math.floor(Math.random() * availDefenders.length)]
+  fightObject.rollHelpers = { hcMultiplier: 1 }
 
   // Handle effects in store at turnstart.
   let dotLog = []
-  Object.entries(fightObject.effectStore).forEach(([key, value]) => {
-    if (value.isDot) {
-      let effect = EFFECTREGISTRY.getEffect(key)
-      if (value.autoLoop && value.stacks && Array.isArray(value.stacks)) {
-        value.stacks.forEach(stack => {
-          if (stack.target === attacker.id) {
-            dotLog.push(effect.tick(fightObject, attacker))
-          }
-        })
-      } else if (value.target === attacker.id) {
-        dotLog.push(effect.tick(fightObject, value, attacker))
+  let collectedStacks = []
+  fightObject.effectStore.forEach(effectObj => {
+    if (effectObj.isDot && effectObj.target === attacker.id) {
+      if (effectObj.collectStacks) {
+        if (!collectedStacks.some(e => e.name === effectObj.name)) {
+          collectedStacks.push({
+            name: effectObj.name,
+            stacks: fightObject.effectStore.filter(e => e.name === effectObj.name && e.target === attacker.id)
+          })
+        }
+      } else {
+        let effect = EFFECTREGISTRY.getEffect(effectObj.name)
+        let result = effect.tick(fightObject, effectObj)
+        attacker.hp -= result.damage
+        dotLog.push(result)
       }
     }
+  })
+
+  collectedStacks.forEach(effectStack => {
+    let effect = EFFECTREGISTRY.getEffect(effectStack.name)
+    let result = effect.tick(fightObject, effectStack.stacks)
+    attacker.hp -= result.damage
+    dotLog.push(result)
   })
 
   let strikeLog = []
   attacker.currentWeapon = 0
   while (attacker.currentWeapon < attacker.weapons.length) {
     let weapon = attacker.weapons[attacker.currentWeapon]
-    fightObject.currentHitChance = weapon.hitChance
+    fightObject.currentHitChance = weapon.hitChance * fightObject.rollHelpers.hcMultiplier
     while (fightObject.currentHitChance > 0) {
       if (Math.random() < fightObject.currentHitChance) {
         strikeLog.push(STRIKE.strike(fightObject, weapon))
@@ -50,22 +62,11 @@ exports.doTurn = function(fightObject, currentTeam, targetTeam) {
   }
 
   // Automatic duration decrease
-  Object.entries(fightObject.effectStore).forEach(([key, value]) => {
-    if (value.decreaseOnTurnEnd) {
-      if (value.stacks && Array.isArray(value.stacks)) {
-        value.stacks.forEach((stack, index) => {
-          if (fightObject.attacker.id === stack.target) {
-            stack.duration--
-            if (stack.duration <= 0) {
-              value.stacks.splice(index, 1)
-            }
-          }
-        })
-      } else if (fightObject.attacker.id === value.target) {
-        value.duration--
-        if (value.duration <= 0) {
-          delete fightObject.effectStore[key]
-        }
+  fightObject.effectStore.forEach((effect, index) => {
+    if (effect.decreaseOnTurnEnd && effect.target === attacker.id) {
+      effect.duration--
+      if (effect.duration <= 0) {
+        fightObject.effectStore.splice(index, 1)
       }
     }
   })

@@ -1,0 +1,117 @@
+{
+  "teams": [
+    {
+      "name": "Defenders of Narnia",
+      "members": [
+        {
+          "name": "Aslan",
+          "id": "asl756",
+          "hp": 48,
+          "effects": [
+            {
+              "name": "block",
+              "chance": 0.7,
+              "multiplier": 0.7
+            }
+          ],
+          "weapons": [
+            {
+              "name": "Claws",
+              "damage": 3,
+              "hitChance": 0.7,
+              "effects": [
+                {
+                  "name": "bleed",
+                  "chance": 0.8,
+                  "duration": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Surpöl",
+          "id": "srp974",
+          "hp": 23,
+          "effects": [
+            {
+              "name": "dodge",
+              "chance": 0.2
+            }
+          ],
+          "weapons": [
+            {
+              "name": "Hammer",
+              "damage": 6,
+              "hitChance": 0.5,
+              "effects": [
+                {
+                  "name": "stun",
+                  "chance": 0.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Prince Caspian",
+          "id": "pca655",
+          "hp": 32,
+          "effects": [],
+          "weapons": [
+            {
+              "name": "Lightbringer",
+              "damage": 5,
+              "hitChance": 0.85,
+              "effects": [
+                {
+                  "name": "crit",
+                  "chance": 0.7,
+                  "dmgMult": 1.7
+                },
+                {
+                  "name": "multistrike",
+                  "chance": 0.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Witch",
+      "members": [
+        {
+          "name": "The White Witch",
+          "id": "tww282",
+          "hp": 134,
+          "effects": [],
+          "weapons": [
+            {
+              "name": "Timedagger",
+              "damage": 2,
+              "hitChance": 0.75,
+              "effects": [
+                {
+                  "name": "timestop",
+                  "chance": 0.5
+                },
+                {
+                  "name": "burn",
+                  "chance": 0.85,
+                  "multiplier": 1.3
+                },
+                {
+                  "name": "poison",
+                  "damage": 3,
+                  "duration": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
