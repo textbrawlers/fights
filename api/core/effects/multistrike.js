@@ -1,6 +1,10 @@
 exports.apply = function(fightObject, settings, damage, success) {
   if (Math.random() < settings.chance) {
     success()
-    fightObject.currentHitChance += 1
+    if (fightObject.currentHitChance < 1) {
+      fightObject.currentHitChance = 1
+    } else {
+      fightObject.currentHitChance += 1
+    }
   }
 }
